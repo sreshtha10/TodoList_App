@@ -15,7 +15,7 @@ class AboutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about)
 
         btnSourceCode.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sreshtha10"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sreshtha10/TodoList_App"))
             startActivity(browserIntent)
         }
     }
