@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Todo List</string>
+    <string name="edittext_hint"><font size="15">Edit Text</font></string>
+</resources>
