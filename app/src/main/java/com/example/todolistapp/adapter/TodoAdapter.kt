@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolistapp.database.DatabaseHelper
 import com.example.todolistapp.databinding.ItemTodoBinding
 import com.example.todolistapp.model.Task
 
@@ -19,7 +18,7 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
             oldItem: Task,
             newItem: Task
         ): Boolean {
-            return oldItem.description == newItem.description
+            return oldItem.id == newItem.id
         }
 
 
@@ -49,8 +48,7 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
         holder.binding.ivTodo.setOnClickListener{
             val position = differ.currentList.indexOf(holder.binding.tvTodo.text.toString())
             val task = holder.binding.tvTodo.text.toString()
-            val databaseHelper = DatabaseHelper(parent.context)
-            databaseHelper.deleteTask(task)
+            // delete from database as well
             differ.currentList.removeAt(position)
 
             notifyItemRemoved(position)
