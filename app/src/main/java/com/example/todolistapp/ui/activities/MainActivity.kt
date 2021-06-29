@@ -1,4 +1,4 @@
-package com.example.todolistapp
+package com.example.todolistapp.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todolistapp.database.DatabaseHelper
+import com.example.todolistapp.R
+import com.example.todolistapp.adapter.TodoAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.menuCloseApp -> finish()
             R.id.menuAbout ->{
-                Intent(this@MainActivity,AboutActivity::class.java).also {
+                Intent(this@MainActivity, AboutActivity::class.java).also {
                     startActivity(it)
                 }
             }

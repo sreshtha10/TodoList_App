@@ -1,4 +1,4 @@
-package com.example.todolistapp
+package com.example.todolistapp.database
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
