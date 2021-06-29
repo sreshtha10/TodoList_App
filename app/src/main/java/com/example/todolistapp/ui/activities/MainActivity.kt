@@ -5,32 +5,31 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.todolistapp.database.DatabaseHelper
 import com.example.todolistapp.R
-import com.example.todolistapp.adapter.TodoAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.todolistapp.databinding.ActivityMainBinding
+import com.example.todolistapp.model.Task
+import com.example.todolistapp.ui.fragments.DisplayTodoFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding :ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val databaseHelper = DatabaseHelper(this)
-        val todoList = databaseHelper.getTasks()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        val adapter = TodoAdapter(todoList)
-        rvTodo.adapter = adapter
-        rvTodo.layoutManager = LinearLayoutManager(this)
+        //list
+        val todoList = mutableListOf<Task>()
+        setUpRecyclerView(todoList)
 
 
-        btnAddTodo.setOnClickListener {
-            todoList.add(etTodo.text.toString())
-            databaseHelper.insertTask(etTodo.text.toString())
-            adapter.notifyItemInserted(todoList.size-1)
-            etTodo.text.clear()
+        val displayTodoFragment = DisplayTodoFragment()
+        supportFragmentManager.beginTransaction().apply {
+            replace(binding.flFragments.id,displayTodoFragment)
+            commit()
         }
 
 
@@ -51,5 +50,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+
+    private fun setUpRecyclerView(todoList:MutableList<Task>){
+        binding.apply {
+
+        }
     }
 }

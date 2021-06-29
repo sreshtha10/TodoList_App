@@ -9,37 +9,13 @@
     android:background="@color/background_app"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTodo"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/etTodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/flFragments"
+        />
 
-    <Button
-        android:id="@+id/btnAddTodo"
-        android:layout_width="79dp"
-        android:layout_height="41dp"
-        android:background="#292828"
-        android:text="Add"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/etTodo"
-        android:layout_width="308dp"
-        android:layout_height="41dp"
-        android:hint="@string/edittext_hint"
-        android:textColorHint="@color/colorAccent"
-        android:textColor="@android:color/white"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

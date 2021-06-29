@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Todo List</string>
     <string name="edittext_hint"><font size="15">Edit Text</font></string>
+    <string name="add_task">Add Task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
 </resources>
