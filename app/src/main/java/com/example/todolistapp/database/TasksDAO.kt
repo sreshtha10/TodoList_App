@@ -13,6 +13,6 @@ interface TasksDAO {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("SELECT * FROM tasks")
+    @Query("SELECT * FROM tasks ORDER BY priority")
     fun getAlTasks():LiveData<MutableList<Task>>
 }
