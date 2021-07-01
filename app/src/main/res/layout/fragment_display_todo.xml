@@ -18,8 +18,9 @@
 
     <Button
         android:id="@+id/btnAddTodo"
-        android:layout_width="79dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:background="#292828"
         android:text="@string/add_task"
         android:textColor="@android:color/white"

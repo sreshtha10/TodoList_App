@@ -163,10 +163,7 @@ class DisplayTodoFragment:Fragment() {
         itemTouchHelper.attachToRecyclerView(binding!!.rvTodo)
 
 
-
-
     }
-
 
     private fun removeAt(position: Int){
         mTaskViewModel.deleteTask(adapter.differ.currentList[position])
