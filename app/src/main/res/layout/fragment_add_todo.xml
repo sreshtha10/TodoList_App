@@ -5,52 +5,95 @@
     android:layout_height="match_parent">
 
 
-    <EditText
-        android:id="@+id/et_heading"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_Title"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="16dp"
+        android:hint="@string/title"
+        app:hintTextColor="?colorOnSurface"
+        app:layout_constraintEnd_toStartOf="@+id/tl_priority"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_heading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="?colorPrimaryDark"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_priority"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:hint="@string/title"
-        app:layout_constraintEnd_toStartOf="@+id/et_priority"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="@string/priority"
+        app:hintTextColor="?colorOnSurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/et_description"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_priority"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="?colorPrimaryDark"
+            android:inputType="number"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="16dp"
-        android:gravity="start"
         android:hint="@string/description"
-        android:minHeight="200dp"
+        android:minHeight="188dp"
+        app:hintTextColor="?colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_heading" />
+        app:layout_constraintTop_toBottomOf="@+id/tl_Title">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="188dp"
+            android:gravity="start"
+            android:textColor="?colorPrimaryDark"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_add_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/add"
-        android:textSize="20sp"
+        android:background="?colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_description" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tl_desc" />
 
     <Button
         android:id="@+id/btn_cancel"
+        android:background="?colorOnSurface"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -59,19 +102,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_add_task" />
-
-
-    <EditText
-        android:id="@+id/et_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:hint="@string/priority"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

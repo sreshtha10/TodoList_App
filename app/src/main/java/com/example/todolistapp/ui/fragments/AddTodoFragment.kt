@@ -33,6 +33,16 @@ class AddTodoFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding!!.btnAddTask.setOnClickListener {
+
+            if(checkEmptyFields()){
+                Toast.makeText(
+                    activity,
+                    "Empty Fields",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
             // add task to database & update recycler view
             val desc = binding!!.etDescription.text.toString()
             val heading = binding!!.etHeading.text.toString()
@@ -69,5 +79,9 @@ class AddTodoFragment:Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    private fun checkEmptyFields():Boolean{
+        return binding?.etDescription?.text.toString() == "" && binding?.etHeading?.text?.toString()  == "" && binding?.etPriority?.text?.toString() == ""
     }
 }
