@@ -22,7 +22,7 @@ ___
 
 <table>
   <tr>
-    <td><img src="https://github.com/sreshtha10/TodoList_App/blob/version2/screenshots/s2.jpg" ></td>
+    <td><img src="https://github.com/sreshtha10/TodoList_App/blob/version2/screenshots/s2.jpg" width= 30% height = 30% ></td>
   
   </tr>
     <tr>
