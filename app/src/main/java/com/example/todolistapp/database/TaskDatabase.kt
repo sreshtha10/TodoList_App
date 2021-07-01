@@ -8,27 +8,33 @@ import com.example.todolistapp.model.Task
 
 @Database(
     entities = [Task::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class TaskDatabase :RoomDatabase() {
     abstract fun taskDao(): TasksDAO
 
     companion object{
         @Volatile
-        private var instance:TaskDatabase? = null
-        private val LOCK = Any()
+        private var INSTANCE:TaskDatabase? = null
 
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK){
-            instance?:createDatabase(context).also{
-                instance = it
+        fun getDatabase(context: Context):TaskDatabase{
+            val tmpInstance = INSTANCE
+            if(tmpInstance != null){
+                return tmpInstance
+            }
+            else{
+                synchronized(this){
+                    val instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        TaskDatabase::class.java,
+                        "tasks_db.db"
+                    ).build()
+                    INSTANCE = instance
+                    return instance
+                }
             }
         }
 
-        private fun createDatabase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext,
-                TaskDatabase::class.java,
-                "tasks_db.db"
-            ).build()
     }
 }

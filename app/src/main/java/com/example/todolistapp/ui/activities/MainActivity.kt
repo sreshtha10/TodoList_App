@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.todolistapp.R
 import com.example.todolistapp.databinding.ActivityMainBinding
-import com.example.todolistapp.model.Task
 import com.example.todolistapp.ui.fragments.DisplayTodoFragment
 
 
@@ -21,9 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        //list
-        val todoList = mutableListOf<Task>()
-        setUpRecyclerView(todoList)
 
 
         val displayTodoFragment = DisplayTodoFragment()
@@ -53,9 +49,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setUpRecyclerView(todoList:MutableList<Task>){
-        binding.apply {
-
-        }
-    }
 }

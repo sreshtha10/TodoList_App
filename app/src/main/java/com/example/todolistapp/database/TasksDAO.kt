@@ -8,11 +8,11 @@ import com.example.todolistapp.model.Task
 interface TasksDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTask(task: Task):Long
+    suspend fun insertTask(task: Task):Long
 
     @Delete
-    fun deleteTask(task: Task)
+    suspend fun deleteTask(task: Task)
 
     @Query("SELECT * FROM tasks")
-    fun getAlTasks():LiveData<List<Task>>
+    fun getAlTasks():LiveData<MutableList<Task>>
 }

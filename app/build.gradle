@@ -51,6 +51,13 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:2.3.0")
+
+
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
 
 }

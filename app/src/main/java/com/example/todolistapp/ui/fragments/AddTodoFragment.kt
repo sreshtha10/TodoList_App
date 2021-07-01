@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.todolistapp.R
 import com.example.todolistapp.databinding.FragmentAddTodoBinding
+import com.example.todolistapp.model.Task
+import com.example.todolistapp.model.TaskViewModel
 
 class AddTodoFragment:Fragment() {
 
     private var binding:FragmentAddTodoBinding? = null
+    private lateinit var mTaskViewModel:TaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,6 +23,9 @@ class AddTodoFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddTodoBinding.inflate(inflater,container,false)
+
+        mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
         return binding!!.root
     }
 
@@ -26,6 +34,26 @@ class AddTodoFragment:Fragment() {
 
         binding!!.btnAddTask.setOnClickListener {
             // add task to database & update recycler view
+            val desc = binding!!.etDescription.text.toString()
+            val heading = binding!!.etHeading.text.toString()
+            val priority = binding!!.etPriority.text.toString().toInt()
+
+            val task = Task(0,heading,desc,priority)
+
+            mTaskViewModel.addTask(task)
+            Toast.makeText(
+                activity,
+                "Task Added",
+                Toast.LENGTH_SHORT
+            ).show()
+
+
+            val displayTodoFragment = DisplayTodoFragment()
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragments,displayTodoFragment)
+                commit()
+            }
+
         }
 
         binding!!.btnCancel.setOnClickListener {
@@ -37,7 +65,6 @@ class AddTodoFragment:Fragment() {
         }
 
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

@@ -9,7 +9,10 @@ import com.example.todolistapp.databinding.ItemTodoBinding
 import com.example.todolistapp.model.Task
 
 
+
 class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
+
+
 
     inner class ViewHolder(val binding:ItemTodoBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -39,33 +42,27 @@ class TodoAdapter(): RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
                 parent,
                 false
             )
+
         )
 
         holder.binding.root.setOnClickListener{
             // display full task
+            
         }
 
-        holder.binding.ivTodo.setOnClickListener{
-            val position = differ.currentList.indexOf(holder.binding.tvTodo.text.toString())
-            val task = holder.binding.tvTodo.text.toString()
-            // delete from database as well
-            differ.currentList.removeAt(position)
-
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position,differ.currentList.size)
-
-        }
         return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
-            tvTodo.text = differ.currentList[position].toString()
+            tvTodo.text = differ.currentList[position].heading
         }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
+
 
 }
