@@ -12,7 +12,7 @@ import com.example.todolistapp.databinding.FragmentViewBinding
 import com.example.todolistapp.model.Task
 import com.example.todolistapp.model.TaskViewModel
 
-class ViewFragment: Fragment() {
+class ViewFragment(val task: Task): Fragment() {
 
     private var binding:FragmentViewBinding?= null
     private lateinit var mTaskViewModel: TaskViewModel
@@ -30,23 +30,29 @@ class ViewFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding!!.apply {
+            tvDescription.text = task.description
+            tvHeading.text = task.heading
+            tvPriority.text = task.priority.toString()
+
+        }
+
         binding!!.btnDelete.setOnClickListener {
-            val heading = binding!!.tvHeading.text.toString()
-            val priority = binding!!.tvDescription.text.toString()
-            val desc = binding!!.tvDescription.text.toString()
-            mTaskViewModel.deleteTask(Task(0,heading,desc,priority.toInt()))
+            mTaskViewModel.deleteTask(task)
 
             Toast.makeText(
                 activity,
                 "Deleted Successfully",
                 Toast.LENGTH_SHORT
             ).show()
+
             val displayTodoFragment = DisplayTodoFragment()
             parentFragmentManager.beginTransaction().apply {
                 replace(R.id.flFragments,displayTodoFragment)
                 commit()
             }
         }
+
     }
 
     override fun onDestroy() {
